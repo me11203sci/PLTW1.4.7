@@ -16,9 +16,17 @@ P_img = PIL.Image.open(P_file)
 fig, axes = plt.subplots(1, 2)
 axes[0].imshow(P_img, interpolation='none')
 
+P_file = os.path.join(directory, 'test_image.jpg')
+P_img = PIL.Image.open(P_file)
+P_large = P_img.resize((650, 400)) #eye width and height measured in plt
+fig3, axes3 = plt.subplots(1, 2)
+axes3[0].imshow(P_img)
+axes3[1].imshow(P_large)
+fig3.show()
+
 # Display student in second axes and set window to the right eye
 axes[1].imshow(P_img, interpolation='none')
-axes[1].set_xticks(range(1050, 1410, 100))
+axes[1].set_xticks(range(1050, 1410, 1000))
 axes[1].set_xlim(410, 530) #coordinates measured in plt, and tried in iPython
 axes[1].set_ylim(175, 20)
 fig.show()
@@ -26,19 +34,19 @@ fig.show()
 # Open, resize, and display earth
 Ep_file = os.path.join(directory, 'crest.png')
 Ep_img = PIL.Image.open(Ep_file)
-Ep_small = Ep_img.resize((20, 25)) #eye width and height measured in plt
+ #eye width and height measured in plt
+ 
 fig2, axes2 = plt.subplots(1, 2)
 axes2[0].imshow(Ep_img)
-axes2[1].imshow(Ep_small)
 fig2.show()
 
 # Paste earth into right eye and display
 # Uses alpha from mask
-P_img.paste(Ep_small, (300, 200), mask=Ep_small) 
+P_large.paste(Ep_img, (0, 200), mask=Ep_img) 
 # Display
-fig3, axes3 = plt.subplots(1, 2)
-axes3[0].imshow(P_img, interpolation='none')
-axes3[1].imshow(P_img, interpolation='none')
-axes3[1].set_xlim(650, 0)
-axes3[1].set_ylim(410,0)
-fig3.show()
+fig4, axes4 = plt.subplots(1, 2)
+axes4[0].imshow(P_large, interpolation='none')
+axes4[1].imshow(P_large, interpolation='none')
+axes4[1].set_xlim(650, 0)
+axes4[1].set_ylim(410,0)
+fig4.show()
