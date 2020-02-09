@@ -8,6 +8,7 @@ from PIL import Image, ImageDraw
 # Delcare variables.
 currentDirectory = os.path.dirname(os.path.abspath(__file__))
 outputDirectory = os.path.join(currentDirectory, "Output\\")
+os.makedirs(outputDirectory)
 workingDirectory = os.path.join(currentDirectory, "Input\\")
 crest = Image.open(currentDirectory + "\\crest.png")
 
