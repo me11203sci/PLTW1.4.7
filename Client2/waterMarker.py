@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 # Import dependencies.
-import matplotlib.pyplot as plt
 import os.path
 from PIL import Image, ImageDraw
 
